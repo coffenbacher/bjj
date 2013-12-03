@@ -1,0 +1,2 @@
+LOCAL:
+Install neo4j with instructions at http://www.neo4j.org/download/linux
