@@ -16,4 +16,3 @@ def i_should_see_tags(step, n, tag):
 def i_should_see_the_header(step, header):
     print "test 3"
     assert False
-
