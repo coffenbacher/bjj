@@ -1,3 +1,15 @@
 <html>
+{% if user.is_authenticated %}
+    Welcome user
+{% else %}
+    Welcome anonymous
+{% endif %}
 
+<form id="login" action="/login/" method="POST">
+    {% csrf_token %}
+    <input name="username">
+    <input name="password">
+    <input type="submit" class="submit">
+</form>
+<img><img><img><img>
 </html>

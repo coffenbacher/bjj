@@ -4,6 +4,8 @@ Feature: Welcome experience
         Then I should see the header "Welcome anonymous"
 
     Scenario: Existing user opens the site
+        Given I am logged in
         When I go to the "/" URL
-        Then I should see header "Welcome user"
+        Then I should see the header "Welcome user"
+        And I should see 4 img tags
 
