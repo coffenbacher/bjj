@@ -7,5 +7,4 @@ Feature: Welcome experience
         Given I am logged in
         When I go to the "/" URL
         Then I should see the header "Welcome user"
-        And I should see 4 img tags
-
+        And I should see at least 4 img tags

@@ -1,3 +1,4 @@
-from django.db import models
+from neo4django.db import models
 
-# Create your models here.
+class Technique(models.NodeModel):
+    name = models.StringProperty()  
