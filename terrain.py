@@ -48,6 +48,10 @@ def i_should_see_tags(step, n, tag):
 def i_should_see_the_header(step, header):
     assert header in world.browser.html
 
+@step(u'I should see the text "(.*)"')
+def i_should_see_the_text(step, text):
+    assert text in world.browser.html
+
 @step(u'I should see "(.*)" in the HTML')
 def i_should_see_the_header(step, text):
     assert text in world.browser.html
