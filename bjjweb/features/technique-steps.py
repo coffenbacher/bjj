@@ -14,4 +14,3 @@ def i_go_to_the_url_of_technique(step, index):
     t = Technique.objects.all()[int(index)]
     url = '/technique/%s/' % t.id #Todo: clean this up using helper
     world.response = world.browser.visit(django_url(url))
-

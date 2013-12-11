@@ -3,6 +3,11 @@
 {% block content %}
 
 <h1>{{ t.name }}</h1>
+<h2>Instructionals</h2>
+{% for v in t.instructionals.all %}
+    {{ v }}
+    {{ v.youtube_id }}
+{% endfor %}
 
 {% endblock %}
 

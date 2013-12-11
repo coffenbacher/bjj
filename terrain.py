@@ -10,6 +10,7 @@ from django.conf import settings
 
 from django.contrib.auth.models import User
 from technique.models import *
+from video.models import *
 
 @before.harvest
 def initial_setup(server):
@@ -72,3 +73,23 @@ def i_have_the_following_techniques(step):
     for technique_dict in step.hashes:
         technique = Technique(**technique_dict)
         technique.save()
+
+@step(u'Given I have the following videos in my database:')
+def given_i_have_the_following_videos_in_my_database(step):
+    Video.objects.all().delete()
+    for video_dict in step.hashes:
+        video = Video(**video_dict)
+        video.save()
+
+@step(u'Given the following relationship in my database:')
+def given_the_following_relationship_in_my_database(step):
+    for d in step.hashes:
+        v = Video.objects.get(youtube_id = d['youtube_id'])
+        t = Technique.objects.get(name = d['technique_name'])
+        t.instructionals.add(v)
+        t.save()
+
+@step(u'I should see the video "([^"]*)"')
+def i_should_see_the_video(step, youtube_id):
+    assert youtube_id in world.browser.html
+
