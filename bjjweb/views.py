@@ -13,4 +13,3 @@ def log_in(request):
         return redirect('/')
     else:
         return redirect('/?invalid_login=true')
-
