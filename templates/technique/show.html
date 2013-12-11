@@ -4,6 +4,8 @@
 
 <h1>{{ t.name }}</h1>
 <h2>Instructionals</h2>
+Start position: {{ t.start.name }}
+Technique type: {{ t.category }}
 {% for v in t.instructionals.all %}
     {{ v }}
     {{ v.youtube_id }}

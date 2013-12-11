@@ -8,7 +8,7 @@
         <div class="span4">
           <div class="image">
               <img src="{% static "assets/img/clarkoplata.jpg" %}">
-              <h2><span>{{ t.name }}</span></h2>
+              <h2><span><a href="/technique/{{ t.id }}/">{{ t.name }}</a></span></h2>
           </div>
         </div>
       {% endfor %}
