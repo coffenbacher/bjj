@@ -14,3 +14,9 @@ def i_go_to_the_url_of_flow(step, name):
     f = Flow.objects.get(name=name)
     url = '/flow/%s/' % f.id #Todo: clean this up using helper
     world.response = world.browser.visit(django_url(url))
+
+@step(u'I add "(.*)" to the flow')
+def i_add_to_the_flow(step, technique_name):
+    t = Technique.objects.get(name=technique_name)
+    world.browser.find_by_id("id_techniques_from").first.select(t.id)
+    world.browser.find_by_id("id_techniques_add_link").click()

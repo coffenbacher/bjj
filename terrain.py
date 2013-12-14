@@ -34,7 +34,8 @@ def reset_data(scenario):
 
 @after.all
 def teardown_browser(total):
-    world.browser.quit()
+    pass
+    #world.browser.quit()
 
 
 @step(u'I go to the "(.*)" URL')
@@ -53,6 +54,14 @@ def i_should_see_the_header(step, header):
 @step(u'I should see the text "(.*)"')
 def i_should_see_the_text(step, text):
     assert text in world.browser.html
+
+@step(u'I should see the tag "(.*)"')
+def i_should_see_the_tag(step, tag):
+    assert 'id="%s"' % tag in world.browser.html
+
+@step(u'I should not see the tag "(.*)"')
+def i_should_not_see_the_tag(step, tag):
+    assert 'id="%s"' % tag not in world.browser.html
 
 @step(u'I should see "(.*)" in the HTML')
 def i_should_see_the_header(step, text):

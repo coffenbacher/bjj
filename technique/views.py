@@ -14,7 +14,6 @@ def show(request, id):
 def create(request):
     if request.method == 'POST':
         form = TechniqueForm(request.POST)
-        #Todo: this should be investigated, odd behavior for neo4django forms
         if form.is_valid():
             t = form.save()
             return redirect('/technique/%s/' % t.id)

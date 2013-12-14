@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'technique',
     'video',
+    'flow',
     'debug_toolbar'
 )
 

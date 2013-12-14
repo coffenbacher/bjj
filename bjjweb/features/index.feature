@@ -1,7 +1,7 @@
 Feature: Welcome experience
     Scenario: Anonymous user opens the site
         When I go to the "/" URL
-        Then I should see the header "Welcome anonymous"
+        Then I should see the tag "login"
 
     Scenario: Existing user opens the site
         Given I am logged in
@@ -10,6 +10,6 @@ Feature: Welcome experience
             | Armbar        | Submission|       |
             | Clarkoplata   | Submission|       |
         When I go to the "/" URL
-        Then I should see the header "Welcome user"
+        Then I should not see the tag "login"
         And I should see at least 4 img tags
         And I should see the text "Clarkoplata"
