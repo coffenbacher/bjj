@@ -11,6 +11,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from technique.models import *
 from video.models import *
+from flow.models import *
 
 @before.harvest
 def initial_setup(server):
@@ -84,6 +85,21 @@ def given_i_have_the_following_videos_in_my_database(step):
         video = Video(**video_dict)
         video.save()
 
+@step(u'Given I have the following flows in my database:')
+def given_i_have_the_following_flows_in_my_database(step):
+    Flow.objects.all().delete()
+    for flow_dict in step.hashes:
+        flow = Flow(**flow_dict)
+        flow.save()
+
+@step(u'Given the following flow relationship in my database:')
+def given_the_following_flow_relationship_in_my_database(step):
+    for d in step.hashes:
+        f = Flow.objects.get(name = d['flow_name'])
+        t = Technique.objects.get(name = d['technique_name'])
+        f.techniques.add(t)
+        f.save()
+
 @step(u'Given the following relationship in my database:')
 def given_the_following_relationship_in_my_database(step):
     for d in step.hashes:
@@ -92,7 +108,20 @@ def given_the_following_relationship_in_my_database(step):
         t.instructionals.add(v)
         t.save()
 
-@step(u'I should see the video "([^"]*)"')
+@step(u'I should see the video "(.*)"')
 def i_should_see_the_video(step, youtube_id):
     assert youtube_id in world.browser.html
 
+@step(u'I fill in "(.*)" with "(.*)"')
+def i_fill_in(step, field, value):
+    world.browser.fill(field, value)
+
+@step(u'I select "(.*)" as technique "(.*)"')
+def i_select_technique(step, field, value):
+    #Todo: really need a generalized version of this
+    value = Technique.objects.get(name=value).id
+    world.browser.select(field, value)
+
+@step(u'I submit the form "(.*)"')
+def i_submit_the_form(step, form):
+    world.browser.find_by_css('#%s .submit' % form).first.click()

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ f.name }}</h1>
+
+    {% for t in f.techniques.all %}
+        <li>{{ t.name }}</li>
+    {% endfor %}
+
+{% endblock %}

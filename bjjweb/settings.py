@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bjjweb',
     'django_extensions',
     'technique',
+    'video',
     'debug_toolbar'
 )
 

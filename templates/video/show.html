@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ v.youtube_id }}</h1>
+
+    {% for t in v.techniques.all %}
+        <li>{{ t.name }}</li>
+    {% endfor %}
+
+{% endblock %}

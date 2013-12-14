@@ -16,3 +16,25 @@ Feature: Creating and viewing techniques
         And I should see the video "tM5XUVMhIsM"
         And I should see the text "Guard"
         And I should see the text "Submission"
+
+    Scenario: Logged in user creates a technique
+        Given I have the following techniques in my database:
+            | name      | category  | start |
+            | Guard     | Position  |       |
+        And given I am logged in
+        When I go to the "/technique/create/" URL
+        And I fill in "name" with "Armbar"
+        And I select "start" as technique "Guard"
+        And I fill in "category" with "Submission"
+        And I submit the form "create"
+        Then I should see the header "Armbar" 
+
+        
+    Scenario: Anonymous user views the technique list
+        Given I have the following techniques in my database:
+            | name      | category  | start |
+            | Guard     | Position  |       |
+            | Armbar    | Submission| Guard |
+        When I go to the "/technique/" URL
+        Then I should see the text "Guard"
+        And I should see the text "Submission"

@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'bjjweb.views.index', name='index'),
     url(r'^login/$', 'bjjweb.views.log_in', name='log_in'),
+    url(r'^flow/', include('flow.urls')),
+    url(r'^video/', include('video.urls')),
     url(r'^technique/', include('technique.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
