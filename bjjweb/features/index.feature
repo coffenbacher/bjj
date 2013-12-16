@@ -11,5 +11,5 @@ Feature: Welcome experience
             | Clarkoplata   | Submission|       |
         When I go to the "/" URL
         Then I should not see the tag "login"
-        And I should see at least 4 img tags
+        And I should see at least 1 img tags
         And I should see the text "Clarkoplata"

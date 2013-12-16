@@ -1,0 +1,151 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>bjjweb]]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static "admin/js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/jquery.init.js" %}"></script>
+
+    {% block head %}
+    {% endblock %}
+    <!-- Le styles -->
+    <link href="{% static "assets/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "assets/css/simple-sidebar.css" %}" rel="stylesheet">
+    <style type="text/css">
+        @font-face{ 
+        font-family: "SansationRegular";
+        src: url('http://fontsforweb.com/public/fonts/424/SansationRegular.eot');
+        src: local("Sansation"), url('http://fontsforweb.com/public/fonts/424/SansationRegular.woff') format("woff"), url('http://fontsforweb.com/public/fonts/424/SansationRegular.ttf') format("truetype");
+        }
+
+      body {
+          margin-top:20px;
+        -webkit-font-smoothing: subpixel-antialiased;
+      }
+      
+      .nav {
+          position: relative;
+      }
+     .navbar-nav {
+         position: absolute;
+         bottom: 0px;
+         right: 30px;
+     }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+
+
+      .image { 
+         margin-bottom: 30px;
+         position: relative; 
+         width: 100%; /* for IE 6 */
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 50px;
+        color: #00196A;
+        font-family: "SansationRegular";
+        margin-top: 0px;
+      }
+      h2 { 
+         position: absolute; 
+         bottom: 0px; 
+         right: 10px; 
+         text-align: right;
+         font-family: "SansationRegular";
+      }
+
+      h2 span { 
+         color: white; 
+         font: bold 24px/45px Helvetica, Sans-Serif; 
+         letter-spacing: -1px;  
+         background: rgb(0, 0, 0); /* fallback color */
+         background: rgba(0, 0, 0, 0.9);
+         padding: 10px; 
+         font-family: "SansationRegular";
+      }
+
+    </style>
+    <link href="{% static "assets/css/bootstrap-responsive.css" %}" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="{% static "assets/js/html5shiv.js" %}"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div id="sidebar-wrapper">
+            <h1 class="navar-brand">]]bjjweb</h1>
+            {% if user.is_authenticated %}
+            {% else %}
+                <form class="form" id="login" action="/login/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input name="username" class="form-control" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <input name="password" class="form-control" placeholder="password" type="password">
+                    </div>
+                    <button type="submit" class="btn btn-default submit">Sign in</button>
+                </form>
+            {% endif %}
+            <ul class="sidebar-nav">
+                <li class="active"><a href="#">Techniques</a></li>
+                <li><a href="#">Flows</a></li>
+                <li><a href="#">Matches</a></li>
+              <li class="sidebar-header"><a href="#">Start Bootstrap</a></li>
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Shortcuts</a></li>
+              <li><a href="#">Overview</a></li>
+              <li class="sidebar-header"><a href="#">Start Bootstrap</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div><!--/span-->
+        <div class="span9">
+          {% block content %}
+          {% endblock %}
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; BJJWeb.com 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static "assets/js/bootstrap.js" %}"></script>
+
+  </body>
+</html>
+

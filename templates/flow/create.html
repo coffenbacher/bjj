@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+<form id="create" method="POST">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" class="submit">
+</form>
+{% endblock %}

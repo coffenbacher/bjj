@@ -4,13 +4,16 @@
 
 {% block content %}
   <div class="row-fluid">
-      {% for t in techniques %}
-        <div class="span4">
+  {% for t in techniques %}
+        <div class="span4 technique">
+          <a href="/technique/{{ t.id }}/">
           <div class="image">
               <img src="{% static "assets/img/clarkoplata.jpg" %}">
-              <h2><span><a href="/technique/{{ t.id }}/">{{ t.name }}</a></span></h2>
+              <h2><span>{{ t.name }}</span></h2>
           </div>
+          </a>
         </div>
-      {% endfor %}
-  </div><!--/row-->
+       {% if forloop.counter|divisibleby:3 %}<div class="row-fluid"></div><!--/row-->{% endif %}
+  {% endfor %}
+  </div>
 {% endblock %}
