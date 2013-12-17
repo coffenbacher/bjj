@@ -109,22 +109,34 @@
         {% endif %}
           <div class="sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
+              <li class="nav-header">Topic</li>
+              <li {% if techniques %} class="active" {% endif %}>
+                <a href="{% url 'technique.views.index' %}">Techniques</a>
+              </li>
+              <li {% if flows %} class="active" {% endif %}>
+                <a href="{% url 'flow.views.index' %}">Flows</a>
+              </li>
+              <li {% if matches %} class="active" {% endif %}>
+                <a href="{% url 'match.views.index' %}">Matches</a>
+              </li>
+              {% if techniques %}
+                  <li class="nav-header">Techniques</li>
+                  {% for t in techniques %}
+                  <li><a href="#">{{ t.name }}</a></li>
+                  {% endfor %}
+              {% endif %}
+              {% if flows %}
+                  <li class="nav-header">Flows</li>
+                  {% for f in flows %}
+                  <li><a href="#">{{ f.name }}</a></li>
+                  {% endfor %}
+              {% endif %}
+              {% if matches %}
+                  <li class="nav-header">Matches</li>
+                  {% for m in matches %}
+                  <li><a href="#">{{ m.name }}</a></li>
+                  {% endfor %}
+              {% endif %}
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

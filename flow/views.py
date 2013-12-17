@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from flow.models import *
 
+def index(request):
+    f = Flow.objects.all()
+    return render(request, 'flow/index.html', {'flows': f})
+
+
 def show(request, id):
     f = Flow.objects.get(id=id)
     return render(request, 'flow/show.html', {'f': f})

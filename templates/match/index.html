@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for m in matches %}
+    <h1>{{ m.name }}</h1>
+{% endfor %}
+
+{% endblock %}
+

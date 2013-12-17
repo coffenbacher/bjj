@@ -10,6 +10,7 @@ from django.conf import settings
 
 from django.contrib.auth.models import User
 from technique.models import *
+from match.models import *
 from video.models import *
 from flow.models import *
 
@@ -93,6 +94,13 @@ def given_i_have_the_following_videos_in_my_database(step):
     for video_dict in step.hashes:
         video = Video(**video_dict)
         video.save()
+
+@step(u'Given I have the following matches in my database:')
+def given_i_have_the_following_matches_in_my_database(step):
+    Match.objects.all().delete()
+    for match_dict in step.hashes:
+        match = Match(**match_dict)
+        match.save()
 
 @step(u'Given I have the following flows in my database:')
 def given_i_have_the_following_flows_in_my_database(step):

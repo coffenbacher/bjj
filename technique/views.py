@@ -3,9 +3,9 @@ from models import *
 
 # Create your views here.
 
-def all(request):
+def index(request):
     ts = Technique.objects.all()
-    return render(request, 'technique/all.html', {'ts': ts})
+    return render(request, 'technique/index.html', {'techniques': ts})
 
 def show(request, id):
     t = Technique.objects.get(id=id)
