@@ -1,9 +1,9 @@
 Feature: Creating and viewing techniques
     Scenario: Anonymous user views a technique
         Given I have the following techniques in my database:
-            | name     | category   | start |
-            | Guard    | Position   |       |
-            | Armbar   | Submission | Guard |
+            | name     | category   | start | image             |
+            | Guard    | Position   |       | clarkoplata.jpg   |
+            | Armbar   | Submission | Guard | clarkoplata.jpg   |
         And given I have the following videos in my database:
             | youtube_id    |
             | tM5XUVMhIsM   | 

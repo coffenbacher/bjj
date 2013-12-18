@@ -6,6 +6,9 @@ def index(request):
     techniques = Technique.objects.all()
     return render(request, 'index.html', {'techniques': techniques})
 
+def intro(request):
+    return render(request, 'intro.html', {'intro': True})
+
 def log_in(request):
     username = request.POST['username']
     password = request.POST['password']

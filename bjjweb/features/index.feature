@@ -13,3 +13,7 @@ Feature: Welcome experience
         Then I should not see the tag "login"
         And I should see at least 1 img tags
         And I should see the text "Clarkoplata"
+
+    Scenario: Anonymous user visits intro page
+        When I go to the "/intro/" URL
+        Then I should see the text "What is Brazilian"

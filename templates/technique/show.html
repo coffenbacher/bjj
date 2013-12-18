@@ -1,14 +1,54 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
+    <div class="row-fluid technique-show-row" style="background-image: url('{% static "assets/img/" %}{{ t.image }}')">
+            <div class="overlay">
+                <div>
+                    <span class="technique-header">{{ t.name }}</span> <i>{{ t.category }}</i>
+                </div>
+                {% if t.start.name %}
+                <div>
+                    from position: {{ t.start.name }}
+                </div>
+                {% endif %}
 
-<h1>{{ t.name }}</h1>
-<h2>Instructionals</h2>
-Start position: {{ t.start.name }}
-Technique type: {{ t.category }}
-{% for v in t.instructionals.all %}
-    {{ v }}
-    {{ v.youtube_id }}
-{% endfor %}
+            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span4">
+            <h1>Learn</h1>
+                {% for v in t.instructionals.all %}
+                    {{ v }}
+                    {{ v.youtube_id }}
+                {% endfor %}
+        </div>
+        <div class="span4">
+            <h1>Use</h1>
+                {% for m in t.matches.all %}
+                    {{ m }}
+                    {{ m.youtube_id }}
+                {% endfor %}
+
+        </div>
+        <div class="span4">
+            <h1>Counter</h1>
+                {% for f in t.flows.all %}
+                    {{ f }}
+                {% endfor %}
+
+        </div>
+    </div>
+    <hr />
+    <div class="row-fluid">
+        <h1> Flows </h1>
+        {% for f in t.flows.all %}
+            {{ f }}
+        {% endfor %}
+
+
+    </div>
+
+    
 
 {% endblock %}

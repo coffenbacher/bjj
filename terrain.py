@@ -82,10 +82,11 @@ def i_am_logged_in(step):
 def i_have_the_following_techniques(step):
     Technique.objects.all().delete()
     for d in step.hashes:
-        technique = Technique(name=d['name'], category=d['category'])
-        if 'start' in d and d['start']:
-            start = Technique.objects.get(name=d['start'])
-            technique.start = start
+        if not d.get('start'):
+            d['start'] = None
+        else:
+            d['start'] = Technique.objects.get(name=d['start'])
+        technique = Technique(**d)
         technique.save()
 
 @step(u'Given I have the following videos in my database:')

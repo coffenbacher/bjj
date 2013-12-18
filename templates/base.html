@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>BJJWeb - open jiu jitsu knowledge and techniques</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,6 +28,12 @@
         padding-bottom: 40px;
         -webkit-font-smoothing: subpixel-antialiased;
       }
+      
+      a:hover {
+        text-decoration: none;
+        }
+
+
       .sidebar-nav {
         padding: 9px 0;
       }
@@ -80,7 +86,35 @@
           color: #0088cc;
           text-decoration: none;
       }
+      
+      .technique-show-row {
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center center;
+        min-height: 300px;
+        margin-bottom: 1em;
+        position: relative;
+      }
 
+      .technique-info-pane {
+      }
+
+      .overlay {
+          position: absolute;
+          bottom: 0px;
+          right: 10px;
+         color: white;
+         background: rgb(0, 0, 0); /* fallback color */
+         background: rgba(0, 0, 0, 0.9);
+         margin: 20px;
+         padding: 20px;
+         font-family: "SansationRegular";
+      }
+      
+      .overlay .technique-header {
+          font-size: 32pt;
+          color: white;
+      }
 
     </style>
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -97,7 +131,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-          <h1>]]bjjweb</h1>
+        <a href="/"><h1>]]bjjweb</h1></a>
         {% if user.is_authenticated %}
         {% else %}
             <form class="form" id="login" action="/login/" method="POST">
@@ -118,6 +152,9 @@
               </li>
               <li {% if matches %} class="active" {% endif %}>
                 <a href="{% url 'match.views.index' %}">Matches</a>
+              </li>
+              <li {% if intro %} class="active" {% endif %}>
+                <a href="{% url 'bjjweb.views.intro' %}">Intro to BJJWeb</a>
               </li>
               {% if techniques %}
                   <li class="nav-header">Techniques</li>
@@ -184,7 +221,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; BJJWeb.com 2013</p>
       </footer>
 
     </div><!--/.fluid-container-->
@@ -192,19 +229,20 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-
+    <!--
+    <script src="{% static "assets/js/jquery.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-transition.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-alert.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-modal.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-dropdown.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-scrollspy.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-tab.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-tooltip.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-popover.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-button.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-collapse.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-carousel.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap-typeahead.js" %}"></script>
+    -->
   </body>
 </html>

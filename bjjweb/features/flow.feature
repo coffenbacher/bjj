@@ -1,9 +1,9 @@
 Feature: Creating and viewing flows
     Scenario: Anonymous user views a flow
         Given I have the following techniques in my database:
-            | name     | category   | start |
-            | Guard    | Position   |       |
-            | Armbar   | Submission | Guard |
+            | name     | category   | start | image             |
+            | Guard    | Position   |       | clarkoplata.jpg   |
+            | Armbar   | Submission | Guard | clarkoplata.jpg   |
         And given I have the following flows in my database:
             | name    |
             | BJJ     | 
@@ -23,9 +23,9 @@ Feature: Creating and viewing flows
         And I should see the text "Nogi"
     Scenario: Logged in user creates a flow
         Given I have the following techniques in my database:
-            | name     | category   | start |
-            | Guard    | Position   |       |
-            | Armbar   | Submission | Guard |
+            | name     | category   | start | image             |
+            | Guard    | Position   |       | clarkoplata.jpg   |
+            | Armbar   | Submission | Guard | clarkoplata.jpg   |
         And given I have the following flows in my database:
             | name  |
         When I go to the "/flow/create/" URL

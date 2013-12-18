@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'bjjweb.views.index', name='index'),
     url(r'^login/$', 'bjjweb.views.log_in', name='log_in'),
+    url(r'^intro/$', 'bjjweb.views.intro', name='intro'),
     url(r'^flow/', include('flow.urls')),
     url(r'^match/', include('match.urls')),
     url(r'^video/', include('video.urls')),

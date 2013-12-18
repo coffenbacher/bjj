@@ -8,12 +8,12 @@
         <div class="span4 technique">
           <a href="/technique/{{ t.id }}/">
           <div class="image">
-              <img src="{% static "assets/img/clarkoplata.jpg" %}">
+              <img src="{% static "assets/img/" %}{{ t.image }}">
               <h2><span>{{ t.name }}</span></h2>
           </div>
           </a>
         </div>
-       {% if forloop.counter|divisibleby:3 %}<div class="row-fluid"></div><!--/row-->{% endif %}
+        {% if forloop.counter|divisibleby:3 %}</div><div class="row-fluid"><!--/row-->{% endif %}
   {% endfor %}
   </div>
 {% endblock %}
