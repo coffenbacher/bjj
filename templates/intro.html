@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span8">
+        <img src="{% static "assets/img/flyingarmbar.jpg" %}">
+    </div>
+    <div class="span4">
+        <h1>what is brazilian jiu-jitsu?</h1>
+        <p>
+        Brazilian jiu-jitsu, or BJJ, is a grappling-based martial art. It is famous for both its effectiveness in single combat and its complexity. The goal of BJJ is to force your opponent to submit ("tap out") with a joint lock or choke. 
+        <br />
+        <a href="http://www.youtube.com/watch?v=oetkHbXtnLg">These highlights from the Metamoris Invitational give a sense of what it looks like in modern sport format</a>.
+        </p>
+        <h1>what is bjjweb?</h1>
+        <p>
+        BJJWeb is an attempt to index all of the open knowledge in BJJ, and surface it in an actionable manner for students of the sport. Actionable means everything from <a href="#">training logs</a> to simple deep links in <a href="{% url 'match.views.index' %}">competition videos</a>. 
+        </p>
+        <p>
+        The knowledge graph of BJJWeb is an important innovation, since BJJ is an intensely cerebral sport. Every attack has a counter, every position has an escape, and every opening might actually be a trap. World chess champions have quit chess to focus on BJJ<a href="http://en.wikipedia.org/wiki/Joshua_Waitzkin">[1]</a>.
+        </p>
+
+
+
+    </div>
+</div>
+<div class="row-fluid" style="margin-top:20px;">
+    <div class="span8">
+        <img src="{% static "assets/img/flow.png" %}">
+    </div>
+    <div class="span4">
+        <h1>bjjweb flows</h1>
+        <p>
+        Most importantly, however, is the visual innovation BJJWeb calls "flows". These are visualizations of techniques and counters. In addition to providing a visual framework to build your game on, they let you easily visually identify holes in your game and areas to expand. 
+        </p>
+        <h1>get started</h1>
+    </div>
+</div>
+
+
+{% endblock %}
