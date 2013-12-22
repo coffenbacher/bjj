@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
 {% for t in techniques %}
-    <h1>{{ t.name }}</h1>
-    <h2>Instructionals</h2>
-    Start position: {{ t.start.name }}
-    Technique type: {{ t.category }}
-    {% for v in t.instructionals.all %}
-        {{ v }}
-        {{ v.youtube_id }}
-    {% endfor %}
+    <a href="{% url "technique.views.show" id=t.id %}">
+    <div class="row-fluid technique-show-row" style="background-image: url('{% static "assets/img/" %}{{ t.image }}')">
+            <div class="overlay">
+                <div>
+                    <span class="technique-header">{{ t.name }}</span> <i>{{ t.category }}</i>
+                </div>
+                {% if t.start.name %}
+                <div>
+                    from position: {{ t.start.name }}
+                </div>
+                {% endif %}
+
+            </div>
+    </div>
+    </a>
 {% endfor %}
 
 {% endblock %}

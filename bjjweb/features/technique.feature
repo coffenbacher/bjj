@@ -12,7 +12,7 @@ Feature: Creating and viewing techniques
             | Armbar            | tM5XUVMhIsM   | 10            |
         When I go to the URL of technique named "Armbar" 
         Then I should see the header "Armbar"
-        And I should see the text "Instructionals"
+        And I should see the text "Learn"
         And I should see the video "tM5XUVMhIsM"
         And I should see the text "Guard"
         And I should see the text "Submission"

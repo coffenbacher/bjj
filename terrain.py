@@ -54,7 +54,7 @@ def i_should_see_the_header(step, header):
 
 @step(u'I should see the text "(.*)"')
 def i_should_see_the_text(step, text):
-    assert text in world.browser.html
+    assert text.lower() in world.browser.html.lower()
 
 @step(u'I should see the tag "(.*)"')
 def i_should_see_the_tag(step, tag):
