@@ -38,3 +38,12 @@ Feature: Creating and viewing techniques
         When I go to the "/technique/" URL
         Then I should see the text "Guard"
         And I should see the text "Submission"
+
+    Scenario: Anonymous user searches the technique list
+        Given I have the following techniques in my database:
+            | name      | category  | start |
+            | Guard     | Position  |       |
+            | Armbar    | Submission| Guard |
+        When I go to the "/technique/?category=Position&name=Guard" URL
+        Then I should see the text "Guard"
+        And I should not see the text "Armbar"

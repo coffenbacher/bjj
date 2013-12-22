@@ -5,6 +5,10 @@ from models import *
 
 def index(request):
     ts = Technique.objects.all()
+    if 'name' in request.GET:
+        ts = ts.filter(name__icontains=request.GET['name'])
+    if 'category' in request.GET:
+        ts = ts.filter(category__icontains=request.GET['category'])
     return render(request, 'technique/index.html', {'techniques': ts})
 
 def show(request, id):

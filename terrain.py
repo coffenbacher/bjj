@@ -56,6 +56,10 @@ def i_should_see_the_header(step, header):
 def i_should_see_the_text(step, text):
     assert text.lower() in world.browser.html.lower()
 
+@step(u'I should not see the text "(.*)"')
+def i_should_see_the_text(step, text):
+    assert text.lower() not in world.browser.html.lower()
+
 @step(u'I should see the tag "(.*)"')
 def i_should_see_the_tag(step, tag):
     assert 'id="%s"' % tag in world.browser.html

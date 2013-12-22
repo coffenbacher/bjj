@@ -2,6 +2,17 @@
 {% load staticfiles %}
 
 {% block content %}
+    <div class="row-fluid">
+        <form id="search" class="form">
+            <select name="category">
+                <option value="">All categories</option>
+                <option value="Submission" {% if "Submission" == request.GET.category %}selected{% endif %}>Submission</option>
+                <option value="Position" {% if "Position" == request.GET.category %}selected{% endif %}>Position</option>
+            </select><!-- TODO: move to javascript select for extensibility -->
+            <input name="name" type="text" class="input-large" placeholder="Technique name" value="{{ request.GET.name }}">
+            <button type="submit" class="btn btn-default submit">Search</button>
+        </form>
+    </div>
 
 {% for t in techniques %}
     <a href="{% url "technique.views.show" id=t.id %}">
