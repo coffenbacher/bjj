@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'technique',
     'video',
     'flow',
+    'match',
     'debug_toolbar'
 )
 

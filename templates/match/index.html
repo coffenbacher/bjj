@@ -3,7 +3,15 @@
 {% block content %}
 
 {% for m in matches %}
-    <h1>{{ m.name }}</h1>
+    <a href="{% url "match.views.show" id=m.id %}">
+        <div class="row-fluid technique-show-row" style="background-image: url('http://img.youtube.com/vi/{{m.youtube_id}}/maxresdefault.jpg')">
+            <div class="overlay">
+                <div>
+                    <span class="technique-header">{{ m.name }}</span>
+                </div>
+            </div>
+        </div>
+    </a>
 {% endfor %}
 
 {% endblock %}
