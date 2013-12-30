@@ -1,5 +1,7 @@
+from django.core import serializers
 from django.shortcuts import render, redirect
 from flow.models import *
+from django.http import HttpResponse
 
 def index(request):
     f = Flow.objects.all()
@@ -19,3 +21,8 @@ def create(request):
     else:
         form = FlowForm()
     return render(request, 'flow/create.html', {'form': form})
+
+def json(request, id):
+    f = Flow.objects.get(id=id)
+    js = serializers.serialize('json', [f, ])
+    return HttpResponse(js, content_type="application/json")

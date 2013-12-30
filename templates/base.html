@@ -169,7 +169,7 @@
               {% if flows %}
                   <li class="nav-header">Flows</li>
                   {% for f in flows %}
-                  <li><a href="#">{{ f.name }}</a></li>
+                  <li><a href="{% url 'flow.views.show' f.id %}">{{ f.name }}</a></li>
                   {% endfor %}
               {% endif %}
               {% if matches %}

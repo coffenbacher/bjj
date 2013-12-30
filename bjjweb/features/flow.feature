@@ -35,3 +35,16 @@ Feature: Creating and viewing flows
         Then I should see the header "BJJ"
         And I should see the text "Armbar"
         
+    Scenario: Flow page requests json object for the flow
+        Given I have the following techniques in my database:
+            | name     | category   | start | image             |
+            | Guard    | Position   |       | clarkoplata.jpg   |
+            | Armbar   | Submission | Guard | clarkoplata.jpg   |
+        And given I have the following flows in my database:
+            | name    |
+            | BJJ     | 
+        And given the following flow relationship in my database:
+            | flow_name    | technique_name    |
+            | BJJ          | Armbar            |
+        When I go to the json URL of flow with name "BJJ"
+        Then I should see valid json
