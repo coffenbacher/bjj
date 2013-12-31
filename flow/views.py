@@ -2,11 +2,11 @@ from django.core import serializers
 from django.shortcuts import render, redirect
 from flow.models import *
 from django.http import HttpResponse
+from json import dumps
 
 def index(request):
     f = Flow.objects.all()
     return render(request, 'flow/index.html', {'flows': f})
-
 
 def show(request, id):
     f = Flow.objects.get(id=id)
@@ -24,5 +24,9 @@ def create(request):
 
 def json(request, id):
     f = Flow.objects.get(id=id)
-    js = serializers.serialize('json', [f, ])
+    nodes = [t.render_to_json() for  t in f.techniques.all()]
+    links = []
+    for t in f.techniques.all():
+        links.extend(t.render_links_to_json())
+    js = dumps({"nodes": nodes, "links": links})
     return HttpResponse(js, content_type="application/json")

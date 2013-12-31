@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
     <h1>{{ f.name }}</h1>
 
-    {% for t in f.techniques.all %}
-        <li>{{ t.name }}</li>
-    {% endfor %}
+    <div class="row" id="flow">
+    </div>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+        flowid = {{ f.id }};
+    </script>
+    <script src="{% static "assets/js/flow.js" %}"></script>
+    <link href="{% static "assets/css/flow.css" %}" rel="stylesheet"/>
+
 
 {% endblock %}

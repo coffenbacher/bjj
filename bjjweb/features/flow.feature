@@ -11,7 +11,7 @@ Feature: Creating and viewing flows
             | flow_name    | technique_name    |
             | BJJ          | Armbar            |
         When I go to the URL of flow with name "BJJ"
-        Then I should see the text "Armbar"  
+        Then I should see the text "BJJ"  
 
     Scenario: Anonymous user views the flow list
         Given I have the following flows in my database:
@@ -33,7 +33,7 @@ Feature: Creating and viewing flows
         And I add "Armbar" to the flow
         And I submit the form "create"
         Then I should see the header "BJJ"
-        And I should see the text "Armbar"
+        And I should see the text "BJJ"
         
     Scenario: Flow page requests json object for the flow
         Given I have the following techniques in my database:

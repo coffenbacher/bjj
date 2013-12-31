@@ -90,6 +90,10 @@ def i_have_the_following_techniques(step):
             d['start'] = None
         else:
             d['start'] = Technique.objects.get(name=d['start'])
+        if not d.get('end'):
+            d['end'] = None
+        else:
+            d['end'] = Technique.objects.get(name=d['end'])
         technique = Technique(**d)
         technique.save()
 

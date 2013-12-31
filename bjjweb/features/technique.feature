@@ -17,6 +17,17 @@ Feature: Creating and viewing techniques
         And I should see the text "Guard"
         And I should see the text "Submission"
 
+    Scenario: Anonymous user views a transition
+        Given I have the following techniques in my database:
+            | name     | category   | start | end       |   image             |
+            | Guard    | Position   |       |           | clarkoplata.jpg   |
+            | Mount    | Position   |       |           | clarkoplata.jpg   |
+            | Sweep    | Sweep      | Guard | Mount | singleleg.jpg |
+        When I go to the URL of technique named "Sweep"
+        Then I should see the text "Guard"
+        And I should see the text "Mount"
+        And I should see the text "Sweep"
+
     Scenario: Logged in user creates a technique
         Given I have the following techniques in my database:
             | name      | category  | start |
